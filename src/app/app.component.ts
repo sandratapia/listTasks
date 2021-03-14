@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Tarea } from './models/tarea.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ToDoSimple';
+
+  arrayTareas: Tarea[];
+
+  constructor(){
+    this.arrayTareas = [];
+  }
+
+  onTareaCreada($event){
+    this.arrayTareas.push($event);
+  }
+
+  borrarTarea(tarea:Tarea){
+    this.arrayTareas.splice(this.arrayTareas.indexOf(tarea), 1);
+  }
 }
